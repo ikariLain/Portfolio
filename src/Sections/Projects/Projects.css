@@ -1,0 +1,7 @@
+.Projects-Container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border: 5px solid #ffffff;
+}
