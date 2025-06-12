@@ -1,0 +1,23 @@
+.Header-Container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  background-color: #282c34;
+  width: 100%;
+}
+
+.Navbar {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  radius: 5px;
+  border: 10px solid #121212;
+}
+
+.Item{
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    padding: 10px;
+    transition: color 0.3s ease;
+}
