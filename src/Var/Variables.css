@@ -1,0 +1,9 @@
+/* variables.css */
+:root {
+  --primary-color: #121212; /*Dark mode background */
+  --secondary-color: #6c757d;
+  --background-light: #ffffff;
+  --background-dark: #1a1a1a;
+  --text-light: #f8f9fa;
+  --text-dark: #212529;
+}
