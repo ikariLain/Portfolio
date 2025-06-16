@@ -1,17 +1,13 @@
-import React, {Component} from 'react'
 import './Header.css'
 
-export default class Header extends Component  {
-
-  
-
-  render(){
+export default function Header  (){
     return (
     <>
-      <div className='Header-Container'> 
-        
+      <header className='Header-Container'>
+
           <div className='"Navbar'>
               <a href="#About;" className='Item'>About me</a>
+
               <a href="#Skills"className='Item'>Skills</a>
               <a href="#EXP" className='Item'>Experiences</a>
               <a href="#Projects" className='Item'>Projects</a>
@@ -23,9 +19,9 @@ export default class Header extends Component  {
               <div className='Dark-Logo'></div>
               <div className='Toggle-Symbol'></div>
           </div>
-          
-      </div>
+
+      </header>
     </>
    )
   }
-}
+

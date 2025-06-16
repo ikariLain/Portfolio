@@ -1,17 +1,21 @@
-import React from 'react';
-import Header from './Header/Header';
-import Footer from './Footer/Footer';
-import Sections from './Sections/Sections';
+import Header from './Components/Header/Header';
+import Footer from './Components/Footer/Footer';
+import Hero from './Components/Hero/Hero';
 import './App.css';
 function App() {
-  
+
   return (
     <>
       <Header />
-      <Sections />
+      <main>
+      <Hero />
+
+      </main>
+
       <Footer />
     </>
   )
 }
+
 
 export default App
