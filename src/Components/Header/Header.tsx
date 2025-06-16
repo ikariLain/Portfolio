@@ -5,7 +5,7 @@ export default function Header  (){
     <>
       <header className='Header-Container'>
 
-          <div className='"Navbar'>
+          <div className='Navbar'>
               <a href="#About;" className='Item'>About me</a>
 
               <a href="#Skills"className='Item'>Skills</a>
