@@ -2,22 +2,141 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10px 20px;
-  background-color: #282c34;
-  width: 100%;
+  padding: 20px;
+  position: relative;
 }
 
 .Navbar {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  radius: 5px;
+  display: flex;
   border: 10px solid #121212;
+  backdrop-filter: blur(10px);
+  background-color: rgba(18, 18, 18, 0.1);
+  border-radius: 2rem;
+  box-shadow: 0 4px 8px rgba(225, 222, 222, 0.5);
 }
 
-.Item{
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 1.2rem;
-    padding: 10px;
-    transition: color 0.3s ease;
+.Item {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1.2rem;
+  padding: 10px;
+  transition: color 0.3s ease;
+}
+
+.Item:hover {
+  color: blue;
+}
+
+.Hamburger-Menu {
+  display: none;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 24px;
+  color: #ffffff;
+  cursor: pointer;
+  z-index: 1001;
+  transition: transform 0.2s ease;
+}
+
+.BarsImg{
+  max-width: 35px;
+
+}
+
+.Hamburger-Menu:hover {
+  transform: scale(1.1);
+}
+
+.Sidebar {
+  position: fixed;
+  top: 15%;
+  right: -100%; /* Startar utanför skärmen */
+
+  width: 60%;
+  max-width: 100px;
+  height: fit-content;
+  min-height: auto;
+
+  backdrop-filter: blur(10px);
+  background-color: rgba(18, 18, 18, 0.1);
+  border: 10px solid #121212;
+  border-radius: 2rem;
+
+  box-shadow: 3px 0 8px rgba(225, 222, 222, 0.5); /* Skugga på vänster sida */
+  z-index: 1000;
+
+  transition: right 0.3s ease;
+  display: flex;
+
+  flex-direction: column;
+  margin-left: 10px; /* Kompensera för border */
+  padding-bottom: 0; /* Ta bort padding i botten */
+}
+
+.Sidebar.Open {
+  right: 1%;
+}
+
+/* Ny klass för att dölja hamburger-ikonen när sidebar är öppen */
+.Hamburger-Menu.hidden {
+  display: none;
+}
+
+.Sidebar-Header {
+
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  padding: 10px;
+  left: 20px;
+  margin-top: 10px;
+}
+
+.Close-Icon {
+  max-width: 25px;
+  color: #ffffff;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  margin-bottom: -10px; /* Lägg till lite marginal under ikonen */
+}
+
+.Close-Icon:hover {
+  transform: scale(1.1);
+}
+
+.Sidebar-Items {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 10px 0 10px; /* Lägg till padding i botten */
+  flex-grow: 0;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 0; /* Ta bort extra marginal */
+  margin-bottom: 0;
+}
+
+.Sidebar-Items .Item {
+  padding: 10px 15px;
+  margin: 7px 0;
+  font-size: 0.9rem;
+  text-align: center;
+  width: 100%;
+}
+
+/* Responsiv design */
+@media (max-width: 590px) {
+  .Navbar {
+    display: none;
+  }
+
+  .Hamburger-Menu {
+    display: block;s
+  }
+}
+
+@media (min-width: 591px) {
+  .Sidebar {
+    display: none;
+  }
 }
