@@ -8,7 +8,7 @@ export default function Header (){
     const [MenuOpen, SetMenuOpen] = useState(false);
 
     const MenuItems = [
-        {id : 1, Name: 'About me', href: '#About'},
+        {id : 1, Name: 'About', href: '#About'},
         {id : 2, Name: 'Skills', href: '#Skills'},
         {id : 3, Name: 'Experiences', href: '#EXP'},
         {id : 4, Name: 'Projects', href: '#Projects'},
@@ -65,10 +65,10 @@ export default function Header (){
               <div className='w-6 h-3 bg-gray-500 rounded-full'></div>
           </div>
 
-            {/* Hamburger  */}
+         {/* Hamburger  */}
         <button
         onClick={() => SetMenuOpen(true)}
-        className="md:hidden">
+        className="md:hidden fixed top-6 right-6 z-50">
 
         <img src={Bars} className='w-7 h-7' />
         </button>
@@ -77,23 +77,24 @@ export default function Header (){
 
            {/* Sidebar */}
             <div className={`
-            fixed top-0 right-0 h-full w-64
-            bg-black/70 backdrop-blur-xl
-            border-l border-white/10
-            p-6
-            transform transition-transform duration-300
-
-            ${MenuOpen ? 'translate-0' : 'translate-x-full' }`}
+            fixed top-1/2 right-0 transform -translate-y-1/2
+            w-40 p-10
+            bg-black/30 backdrop-blur-xl
+            border border-white/10
+            rounded-full
+            flex flex-col items-center gap-2
+            transition-transform duration-300
+            ${MenuOpen ? 'translate-x-0' : 'translate-x-full' }`}
             >
                 {/*  Close button */}
                 <button onClick={() => SetMenuOpen(false)}>
                     <img
                         src={Xmark}
-                        className="w-6 h-6"
+                        className="w-10 h-10"
                     />
                 </button>
                 {/*Menu Links */}
-                <div className="mt-10 flex flex-col gap-6"
+                <div className="mt-10 flex flex-col items-center gap-8"
                 >
                     {MenuItems.map(item => (
                         <a
