@@ -5,15 +5,15 @@ import './index.css';
 function App() {
 
   return (
-    <>
+    <div className='min-h-screen flex flex-col'>
       <Header />
-      <main>
+      <main className='flex-1'>
       <Hero />
 
       </main>
 
       <Footer />
-    </>
+    </div>
   )
 }
 
