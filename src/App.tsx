@@ -9,9 +9,7 @@ function App() {
       <Header />
       <main className='flex-1'>
       <Hero />
-
       </main>
-
       <Footer />
     </div>
   )

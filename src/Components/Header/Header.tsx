@@ -1,11 +1,28 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Bars from '../../assets/BarsWhite.png';
 import Xmark from '../../assets/XmarkWhite.png';
-
+import {  FaMoon} from 'react-icons/fa';
+import { LuSun } from "react-icons/lu";
 //import './Header.css'
 
 export default function Header (){
     const [MenuOpen, SetMenuOpen] = useState(false);
+    const [DarkMode, SetDarkMode] = useState(
+        localStorage.getItem('theme') === 'dark' ||
+        (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+    );
+
+    useEffect(() => {
+        if (DarkMode) {
+            document.documentElement.classList.add('dark');
+            localStorage.setItem('theme', 'dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+            localStorage.setItem('theme', 'light');
+        }
+    }, [DarkMode]);
+
+    const toogleTheme = () => SetDarkMode(!DarkMode);
 
     const MenuItems = [
         {id : 1, Name: 'About', href: '#About'},
@@ -58,12 +75,20 @@ export default function Header (){
 
             </nav>
 
-            {/* Dark/Light Mode Toggle placeholder */}
-          <div className='hidden md:flex items-center gap-2 ml-auto '>
-              <div className='w-4 h-4 bg-white rounded-full'></div>
-              <div className='w-4 h-4 bg-black rounded-full'></div>
-              <div className='w-6 h-3 bg-gray-500 rounded-full'></div>
-          </div>
+            {/* Dark/Light Mode Toggle  */}
+          <button
+            onClick={toogleTheme}
+            className='
+            hidden md:flex items-center ml-auto mr-6
+            text-white text-xl p-2
+            rounded-full bg-black/30 border border-white/10
+            hover:bg-black/ transition
+             '>
+                {DarkMode ? ( <LuSun  className='text-white transition'/>)
+                : (
+                    <FaMoon className='text-white transition'/>
+                )}
+          </button>
 
          {/* Hamburger  */}
         <button
