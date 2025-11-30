@@ -1,54 +1,82 @@
-# React + TypeScript + Vite
+# 👋 Hej, jag är Matheus
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Välkommen till min portfolio! Jag är en passionerad utvecklare med fokus på **webbutveckling**, **C#/.NET**, **React**, **JavaScript**, och **moderna backend- och frontend-tekniker**. Jag älskar att bygga projekt som löser riktiga problem och samtidigt är snabba, stabila och snyggt designade.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Om mig
 
-## Expanding the ESLint configuration
+* 🎓 Junior utvecklare med fokus på fullstack
+* 💻 Arbetar dagligen med **C#**, **ASP.NET Core**, **Entity Framework**, **React**, **TailwindCSS**, **PHP** och **MySQL**
+* 📚 Alltid hungrig på att lära mig nya tekniker och verktyg
+* ⚡ Älskar att optimera kod, strukturera system och bygga skalbara API:er
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## 🛠️ Teknologier & Verktyg
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### **Frontend**
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+* React / ASP .NET MVC
+* JavaScript / TypeScript
+* TailwindCSS / Bootstrap
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+### **Backend**
+
+* C# / .NET Core / Web API
+* PHP (OOP, MVC, Laravel basic)
+* Node.js (grundläggande)
+
+### **Databaser**
+
+* SQL Server
+* MySQL
+* SQLite
+
+### **DevOps / Verktyg**
+
+* Docker
+* Git & GitHub
+* Azure (grundnivå)
+* Postman / Thunder Client
+
+---
+
+## 📂 Mina Projekt
+
+### 🔹 **Noog API** – Fullstack-system (pågående)
+
+* .NET Core backend
+* FluentValidation, AutoMapper, Repository Pattern
+* SQL Server + Entity Framework
+* React frontend
+
+### 🔹 **Bookingsystem i React**
+
+* Komplett bokningsflöde
+* React-router, Context API
+* Responsiv design
+
+### 🔹 **PHP REST API + MySQL**
+
+* Egenbyggt REST API
+* CRUD + relationer
+* Utökad säkerhet och struktur
+
+Fler projekt finns i repos! 👇
+
+---
+
+## 📊 GitHub Stats
+
+![GitHub Streak](https://github-readme-streak-stats.herokuapp.com/?user=ikariLain\&theme=nightowl)
+
+---
+
+## 📫 Kontakt
+
+* 💼 [LinkedIn](#)
+
+---
+
+Tack för att du kollar in min portfolio! 😊
