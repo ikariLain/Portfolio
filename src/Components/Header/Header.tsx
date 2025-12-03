@@ -6,11 +6,15 @@ import { LuSun } from "react-icons/lu";
 //import './Header.css'
 
 export default function Header (){
+
+    const [Hidden, setHidden] = useState(false);
+
     const [MenuOpen, SetMenuOpen] = useState(false);
     const [DarkMode, SetDarkMode] = useState(
         localStorage.getItem('theme') === 'dark' ||
         (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
     );
+
 
     useEffect(() => {
         if (DarkMode) {
@@ -22,7 +26,35 @@ export default function Header (){
         }
     }, [DarkMode]);
 
+
     const toogleTheme = () => SetDarkMode(!DarkMode);
+
+    useEffect(() => {
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+
+    const updateScroll = () => {
+        const currentScroll = window.scrollY;
+
+        // Hide when scrolling down, show when scrolling up
+        const shouldHide = currentScroll > lastScrollY && currentScroll > 20;
+        setHidden(shouldHide);
+
+        lastScrollY = currentScroll;
+        ticking = false;
+    };
+
+    const handleScroll = () => {
+        if (!ticking) {
+            window.requestAnimationFrame(updateScroll);
+            ticking = true;
+        }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+}, []);
+
 
     const MenuItems = [
         {id : 1, Name: 'About', href: '#About'},
@@ -35,13 +67,14 @@ export default function Header (){
 
     return (
       <header className='
-        relative top-0 left-0 w-full
+        fixed top-0 left-0 w-full
         flex justify-center items-center
-        px-6 py-4 z-50
+        px-6 py-4
+        z-50
         '>
 
         {/* Desktop Navbar */}
-        <nav className='
+        <nav className={`
         hidden md:flex gap-8
         px-10 py-3
         rounded-full
@@ -50,7 +83,10 @@ export default function Header (){
         shadow-lg
         absolute left-1/2 top-1/2
         -translate-x-1/2 -translatey-y-1/2
-        '>
+        transition-all duration-50 ease-in-out
+
+            ${Hidden ? "-translate-y-20 opacity-0" : "translate-y-0 opacity-100"}
+        `}>
             {MenuItems.map(item => (
                 <a key={item.id}
                     href={item.href}
@@ -136,6 +172,6 @@ export default function Header (){
                 </div>
             </div>
       </header>
-   )
+    );
   }
 
