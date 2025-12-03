@@ -6,9 +6,11 @@ import {
 
 import {
   SiTypescript, SiDotnet, SiMongodb, SiMysql, SiPostgresql,
-  SiTailwindcss, SiFlutter, SiSharp,
+  SiTailwindcss, SiFlutter,
 
 } from "react-icons/si";
+
+import cSharp from "../../assets/icons/cSharp.svg";
 
 export default function Skills() {
 
@@ -59,7 +61,7 @@ export default function Skills() {
     {
   title: "Microsoft / .NET",
   skills: [
-    { name: "C#", icon: <SiSharp /> },
+    { name: "C#", icon: <img src={cSharp} className="w-9 h-9" /> },
     { name: ".NET", icon: <SiDotnet /> },
     { name: "ASP.NET MVC", icon: <SiDotnet /> },
     { name: "Entity Framework", icon: <FaDatabase /> }
