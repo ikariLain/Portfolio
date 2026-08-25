@@ -1,9 +1,48 @@
-/* variables.css */
 :root {
-  --primary-color: #121212; /*Dark mode background */
-  --secondary-color: #6c757d;
-  --background-light: #ffffff;
-  --background-dark: #1a1a1a;
-  --text-light: #f8f9fa;
-  --text-dark: #212529;
+  color-scheme: dark;
+  --page: #050505;
+  --page-elevated: #09090a;
+  --surface: #0d0e10;
+  --surface-strong: #131417;
+  --surface-hover: #18191d;
+  --text: #fdfdfd;
+  --text-soft: rgba(253, 254, 255, 0.68);
+  --text-faint: rgba(253, 254, 255, 0.44);
+  --border: rgba(255, 255, 255, 0.1);
+  --border-strong: rgba(255, 255, 255, 0.18);
+  --brand: #fdfdfd;
+  --on-brand: #050505;
+  --info: #70b8ff;
+  --info-bg: rgba(0, 119, 255, 0.16);
+  --success: rgba(70, 254, 165, 0.83);
+  --success-bg: rgba(34, 255, 153, 0.12);
+  --warning: #ffca16;
+  --shadow: 0 24px 80px rgba(0, 0, 0, 0.38);
+  --content-width: 1180px;
+  --section-space: clamp(5.5rem, 10vw, 9rem);
+  --radius-sm: 10px;
+  --radius-md: 18px;
+  --radius-lg: 28px;
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --page: #f7f7f5;
+  --page-elevated: #fdfdfd;
+  --surface: #ffffff;
+  --surface-strong: #f1f1ef;
+  --surface-hover: #eaeae7;
+  --text: #101012;
+  --text-soft: rgba(16, 16, 18, 0.66);
+  --text-faint: rgba(16, 16, 18, 0.44);
+  --border: rgba(16, 16, 18, 0.1);
+  --border-strong: rgba(16, 16, 18, 0.18);
+  --brand: #000000;
+  --on-brand: #fdfdfd;
+  --info: #1769aa;
+  --info-bg: rgba(0, 119, 255, 0.09);
+  --success: #087d4b;
+  --success-bg: rgba(8, 125, 75, 0.1);
+  --warning: #9b6a00;
+  --shadow: 0 24px 80px rgba(22, 23, 26, 0.1);
 }
