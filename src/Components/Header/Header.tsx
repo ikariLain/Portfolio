@@ -1,177 +1,138 @@
-import { useState, useEffect } from 'react';
-import Bars from '../../assets/BarsWhite.png';
-import Xmark from '../../assets/XmarkWhite.png';
-import {  FaMoon} from 'react-icons/fa';
-import { LuSun } from "react-icons/lu";
-//import './Header.css'
+import { useEffect, useState } from 'react';
+import { LuArrowUpRight, LuMenu, LuMoon, LuSun, LuX } from 'react-icons/lu';
+import './Header.css';
 
-export default function Header (){
+type Theme = 'dark' | 'light';
 
-    const [Hidden, setHidden] = useState(false);
+const menuItems = [
+  { name: 'Om mig', href: '#about' },
+  { name: 'Kompetenser', href: '#skills' },
+  { name: 'Projekt', href: '#projects' },
+  { name: 'Arbetssätt', href: '#process' },
+  { name: 'Kontakt', href: '#contact' },
+];
 
-    const [MenuOpen, SetMenuOpen] = useState(false);
-    const [DarkMode, SetDarkMode] = useState(
-        localStorage.getItem('theme') === 'dark' ||
-        (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
-    );
+function getInitialTheme(): Theme {
+  const savedTheme = localStorage.getItem('theme');
+  return savedTheme === 'light' ? 'light' : 'dark';
+}
 
+export default function Header() {
+  const [hidden, setHidden] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [theme, setTheme] = useState<Theme>(getInitialTheme);
 
-    useEffect(() => {
-        if (DarkMode) {
-            document.documentElement.classList.add('dark');
-            localStorage.setItem('theme', 'dark');
-        } else {
-            document.documentElement.classList.remove('dark');
-            localStorage.setItem('theme', 'light');
-        }
-    }, [DarkMode]);
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+    localStorage.setItem('theme', theme);
+  }, [theme]);
 
-
-    const toogleTheme = () => SetDarkMode(!DarkMode);
-
-    useEffect(() => {
+  useEffect(() => {
     let lastScrollY = window.scrollY;
     let ticking = false;
 
-    const updateScroll = () => {
-        const currentScroll = window.scrollY;
-
-        // Hide when scrolling down, show when scrolling up
-        const shouldHide = currentScroll > lastScrollY && currentScroll > 20;
-        setHidden(shouldHide);
-
-        lastScrollY = currentScroll;
-        ticking = false;
+    const updateHeader = () => {
+      const currentScroll = window.scrollY;
+      setHidden(currentScroll > lastScrollY && currentScroll > 120 && !menuOpen);
+      lastScrollY = currentScroll;
+      ticking = false;
     };
 
     const handleScroll = () => {
-        if (!ticking) {
-            window.requestAnimationFrame(updateScroll);
-            ticking = true;
-        }
+      if (!ticking) {
+        window.requestAnimationFrame(updateHeader);
+        ticking = true;
+      }
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-}, []);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [menuOpen]);
 
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setMenuOpen(false);
+    };
 
-    const MenuItems = [
-        {id : 1, Name: 'About', href: '#About'},
-        {id : 2, Name: 'Skills', href: '#Skills'},
-        {id : 3, Name: 'Experiences', href: '#EXP'},
-        {id : 4, Name: 'Projects', href: '#Projects'},
-        {id : 5, Name: 'Contact', href: '#Contact'}
-    ]
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
+  const closeMenu = () => setMenuOpen(false);
 
-    return (
-      <header className='
-        fixed top-0 left-0 w-full
-        flex justify-center items-center
-        px-6 py-4
-        z-50
-        '>
+  return (
+    <header className={`site-header ${hidden ? 'site-header--hidden' : ''}`}>
+      <div className="header-inner">
+        <a className="brand-mark" href="#top" aria-label="Matheus Torrico, startsida">
+          <span className="brand-monogram">MT</span>
+          <span className="brand-copy">
+            <strong>Matheus Torrico</strong>
+            <small>Fullstackutvecklare</small>
+          </span>
+        </a>
 
-        {/* Desktop Navbar */}
-        <nav className={`
-        hidden md:flex gap-8
-        px-10 py-3
-        rounded-full
-        bg-black/40 backdrop-blur-xl
-        border border-white/12
-        shadow-lg
-        absolute left-1/2 top-1/2
-        -translate-x-1/2 -translatey-y-1/2
-        transition-all duration-50 ease-in-out
+        <nav className="desktop-nav" aria-label="Huvudnavigation">
+          {menuItems.map((item) => (
+            <a key={item.href} href={item.href}>{item.name}</a>
+          ))}
+        </nav>
 
-            ${Hidden ? "-translate-y-20 opacity-0" : "translate-y-0 opacity-100"}
-        `}>
-            {MenuItems.map(item => (
-                <a key={item.id}
-                    href={item.href}
-                    className='
-                    text-white/80 hover:text-white font-medium
-                    tracking-wide
-                    '>
-                    {item.Name}</a>
-            ))}
-
-                {/* Glow Effect */}
-                <div className='
-                absolute left-1/2 -translate-x-1/2
-                top-full
-                mt-2
-                w-120 h-1
-                bg-linear-to-b from-white/70 to-transparent
-                blur-lg rounded-full
-                '>
-
-                </div>
-
-            </nav>
-
-            {/* Dark/Light Mode Toggle  */}
+        <div className="header-actions">
           <button
-            onClick={toogleTheme}
-            className='
-            hidden md:flex items-center ml-auto mr-6
-            text-white text-xl p-2
-            rounded-full bg-black/30 border border-white/10
-            hover:bg-black/ transition
-             '>
-                {DarkMode ? ( <LuSun  className='text-white transition'/>)
-                : (
-                    <FaMoon className='text-white transition'/>
-                )}
+            className="icon-button"
+            type="button"
+            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+            aria-label={theme === 'dark' ? 'Aktivera ljust tema' : 'Aktivera mörkt tema'}
+            title={theme === 'dark' ? 'Ljust tema' : 'Mörkt tema'}
+          >
+            {theme === 'dark' ? <LuSun aria-hidden="true" /> : <LuMoon aria-hidden="true" />}
           </button>
 
-         {/* Hamburger  */}
-        <button
-        onClick={() => SetMenuOpen(true)}
-        className="md:hidden fixed top-6 right-6 z-50">
+          <a
+            className="github-link"
+            href="https://github.com/ikariLain"
+            target="_blank"
+            rel="noreferrer"
+          >
+            GitHub <LuArrowUpRight aria-hidden="true" />
+          </a>
 
-        <img src={Bars} className='w-7 h-7' />
-        </button>
+          <button
+            className="icon-button menu-button"
+            type="button"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-menu"
+            aria-label={menuOpen ? 'Stäng meny' : 'Öppna meny'}
+          >
+            {menuOpen ? <LuX aria-hidden="true" /> : <LuMenu aria-hidden="true" />}
+          </button>
+        </div>
+      </div>
 
-
-
-           {/* Sidebar */}
-            <div className={`
-            fixed top-1/2 right-0 transform -translate-y-1/2
-            w-40 p-10
-            bg-black/30 backdrop-blur-xl
-            border border-white/10
-            rounded-full
-            flex flex-col items-center gap-2
-            transition-transform duration-300
-            ${MenuOpen ? 'translate-x-0' : 'translate-x-full' }`}
-            >
-                {/*  Close button */}
-                <button onClick={() => SetMenuOpen(false)}>
-                    <img
-                        src={Xmark}
-                        className="w-10 h-10"
-                    />
-                </button>
-                {/*Menu Links */}
-                <div className="mt-10 flex flex-col items-center gap-8"
-                >
-                    {MenuItems.map(item => (
-                        <a
-                            className='
-                            text-white/90 text-lg font-medium tracking-wide hover:text-white
-                            '
-                            key={item.id}
-                            href={item.href}
-                            onClick={()=> SetMenuOpen(false)}
-                        >
-                            {item.Name}
-                        </a>
-                    ))}
-                </div>
-            </div>
-      </header>
-    );
-  }
-
+      <div
+        id="mobile-menu"
+        className={`mobile-menu ${menuOpen ? 'mobile-menu--open' : ''}`}
+        aria-hidden={!menuOpen}
+      >
+        <nav aria-label="Mobilnavigation">
+          {menuItems.map((item, index) => (
+            <a key={item.href} href={item.href} onClick={closeMenu} tabIndex={menuOpen ? 0 : -1}>
+              <span>0{index + 1}</span>
+              {item.name}
+            </a>
+          ))}
+        </nav>
+        <a
+          className="mobile-github"
+          href="https://github.com/ikariLain"
+          target="_blank"
+          rel="noreferrer"
+          tabIndex={menuOpen ? 0 : -1}
+        >
+          Besök min GitHub <LuArrowUpRight aria-hidden="true" />
+        </a>
+      </div>
+    </header>
+  );
+}
