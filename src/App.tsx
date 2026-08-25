@@ -1,21 +1,29 @@
 import Header from './Components/Header/Header';
 import Footer from './Components/Footer/Footer';
 import Hero from './Components/Hero/Hero';
-import './index.css';
+import About from './Components/About-Me/About';
 import Skills from './Components/Skills/Skills';
-function App() {
+import Projects from './Components/Projects/Projects';
+import Experiences from './Components/Experiences/Experiences';
+import Contact from './Components/Contact/Contact';
+import './index.css';
 
+function App() {
   return (
-    <div className='min-h-screen flex flex-col'>
+    <div className="site-shell">
+      <a className="skip-link" href="#main-content">Gå till innehållet</a>
       <Header />
-      <main className='flex-1'>
-      <Hero />
-      <Skills />
+      <main id="main-content">
+        <Hero />
+        <About />
+        <Skills />
+        <Projects />
+        <Experiences />
+        <Contact />
       </main>
       <Footer />
     </div>
-  )
+  );
 }
 
-
-export default App
+export default App;
