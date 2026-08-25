@@ -2,6 +2,8 @@ import { LuArrowUpRight, LuCheck, LuGithub, LuLayers3 } from 'react-icons/lu';
 import useLanguage from '../../useLanguage';
 import './Projects.css';
 
+const fallbackProjectsUrl = 'https://github.com/ikariLain?tab=repositories';
+
 export default function Projects() {
   const { copy } = useLanguage();
 
@@ -15,7 +17,7 @@ export default function Projects() {
           </div>
           <a
             className="all-projects-link"
-            href="https://github.com/ikariLain?tab=repositories"
+            href={fallbackProjectsUrl}
             target="_blank"
             rel="noreferrer"
           >
@@ -57,7 +59,7 @@ export default function Projects() {
               <div className="project-footer">
                 <span>{copy.projects.builtBy}</span>
                 <a
-                  href="https://github.com/ikariLain?tab=repositories"
+                  href={project.url || fallbackProjectsUrl}
                   target="_blank"
                   rel="noreferrer"
                   aria-label={`${copy.projects.exploreAria} ${project.title}`}

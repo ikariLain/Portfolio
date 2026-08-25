@@ -6,6 +6,15 @@
  */
 export type Language = 'en' | 'sv';
 
+// Fyll i respektive GitHub- eller projektlänk här.
+// Tomma värden använder länken till den generella repository-listan som fallback.
+const projectUrls = {
+  davarSmartScan: '',
+  realtimeQuiz: '',
+  noogApi: 'https://github.com/michaelw-jpg/noog',
+  architectureComparison: 'https://github.com/ikariLain/Clean-Architecture',
+};
+
 // =============================================================================
 // Engelska — standardspråk
 // =============================================================================
@@ -128,6 +137,7 @@ const english = {
     items: [
       {
         number: '01',
+        url: projectUrls.davarSmartScan,
         title: 'Davar SmartScan',
         type: 'Flutter / OCR',
         status: 'In progress',
@@ -138,6 +148,7 @@ const english = {
       },
       {
         number: '02',
+        url: projectUrls.realtimeQuiz,
         title: 'Real-time quiz platform',
         type: 'Full stack / Real time',
         status: 'In progress',
@@ -148,6 +159,7 @@ const english = {
       },
       {
         number: '03',
+        url: projectUrls.noogApi,
         title: 'Noog API',
         type: 'Full-stack system',
         status: 'Group project',
@@ -158,6 +170,7 @@ const english = {
       },
       {
         number: '04',
+        url: projectUrls.architectureComparison,
         title: 'Clean vs Vertical Slice',
         type: '.NET / Backend',
         status: 'Thesis project',
@@ -336,6 +349,7 @@ const swedish: Translation = {
     items: [
       {
         number: '01',
+        url: projectUrls.davarSmartScan,
         title: 'Davar SmartScan',
         type: 'Flutter / OCR',
         status: 'Pågående',
@@ -346,6 +360,7 @@ const swedish: Translation = {
       },
       {
         number: '02',
+        url: projectUrls.realtimeQuiz,
         title: 'Realtidsplattform för quiz',
         type: 'Fullstack / Realtid',
         status: 'Pågående',
@@ -356,6 +371,7 @@ const swedish: Translation = {
       },
       {
         number: '03',
+        url: projectUrls.noogApi,
         title: 'Noog API',
         type: 'Fullstacksystem',
         status: 'Grupprojekt',
@@ -366,6 +382,7 @@ const swedish: Translation = {
       },
       {
         number: '04',
+        url: projectUrls.architectureComparison,
         title: 'Clean vs Vertical Slice',
         type: '.NET / Backend',
         status: 'Examensarbete',
