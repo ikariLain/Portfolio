@@ -1,16 +1,30 @@
+/**
+ * Centralt register för all text som visas i portfolion.
+ *
+ * Lägg alltid till nya nycklar i `english` först. Typen `Translation` ser sedan
+ * till att den svenska versionen har exakt samma struktur.
+ */
 export type Language = 'en' | 'sv';
 
+// =============================================================================
+// Engelska — standardspråk
+// =============================================================================
+
 const english = {
+  // Sidtitel, metabeskrivning och global tillgänglighet.
   meta: {
     title: 'Matheus Torrico — Full-stack developer',
     description: 'Matheus Torrico is a junior full-stack developer focused on React, C#/.NET and modern web experiences.',
     skipLink: 'Skip to content',
   },
+
+  // Header, navigation, tema och språkval.
   header: {
     role: 'Full-stack developer',
     homeLabel: 'Matheus Torrico, home',
     navigationLabel: 'Main navigation',
     mobileNavigationLabel: 'Mobile navigation',
+    // Länkarna måste matcha respektive section-id i komponenterna.
     menu: [
       { name: 'About', href: '#about' },
       { name: 'Skills', href: '#skills' },
@@ -27,6 +41,8 @@ const english = {
     visitGithub: 'Visit my GitHub',
     switchLanguage: 'Switch to Swedish',
   },
+
+  // Första sektionen och den dekorativa kodillustrationen.
   hero: {
     availability: 'Available for the next opportunity',
     titleFirst: 'I build digital products',
@@ -42,6 +58,8 @@ const english = {
     sceneCaptionFirst: 'Frontend and backend',
     sceneCaptionSecond: 'as one cohesive whole.',
   },
+
+  // Presentation och personliga utvecklingsprinciper.
   about: {
     label: '01 / About',
     titleFirst: 'Curious about technology.',
@@ -62,6 +80,8 @@ const english = {
       },
     ],
   },
+
+  // Kompetensområden och tekniker.
   skills: {
     label: '02 / Skills',
     title: 'Tools for the whole product.',
@@ -95,6 +115,8 @@ const english = {
     learningStatus: 'Always learning',
     learningText: "I'm currently deepening my knowledge of scalable .NET APIs, modern React and better delivery workflows.",
   },
+
+  // Projektsektionen och samtliga projektkort.
   projects: {
     label: '03 / Selected work',
     title: 'Built to solve, learn and deliver.',
@@ -102,6 +124,7 @@ const english = {
     builtBy: 'Built by Matheus Torrico',
     exploreCode: 'Explore code',
     exploreAria: 'Explore repositories for',
+    // `featured` styr om kortet visas över hela gridens bredd.
     items: [
       {
         number: '01',
@@ -145,6 +168,8 @@ const english = {
       },
     ],
   },
+
+  // Arbetsprocess och professionell inriktning.
   process: {
     label: '04 / Process',
     title: 'From unclear idea to clear solution.',
@@ -169,6 +194,8 @@ const english = {
       },
     ],
   },
+
+  // Kontaktsektionen och dess call-to-action.
   contact: {
     label: '05 / Contact',
     title: 'Have a problem worth solving?',
@@ -176,6 +203,8 @@ const english = {
     button: 'Contact me on GitHub',
     status: 'Open to opportunities',
   },
+
+  // Sidfot.
   footer: {
     builtBy: 'Designed and developed by Matheus Torrico.',
     copyright: 'All rights reserved.',
@@ -183,19 +212,28 @@ const english = {
   },
 };
 
+// Den engelska strukturen är mall för alla andra språk.
 export type Translation = typeof english;
 
+// =============================================================================
+// Svenska
+// =============================================================================
+
 const swedish: Translation = {
+  // Sidtitel, metabeskrivning och global tillgänglighet.
   meta: {
     title: 'Matheus Torrico — Fullstackutvecklare',
     description: 'Matheus Torrico är junior fullstackutvecklare med fokus på React, C#/.NET och moderna webbupplevelser.',
     skipLink: 'Gå till innehållet',
   },
+
+  // Header, navigation, tema och språkval.
   header: {
     role: 'Fullstackutvecklare',
     homeLabel: 'Matheus Torrico, startsida',
     navigationLabel: 'Huvudnavigation',
     mobileNavigationLabel: 'Mobilnavigation',
+    // Länkarna måste vara identiska med den engelska versionen.
     menu: [
       { name: 'Om mig', href: '#about' },
       { name: 'Kompetenser', href: '#skills' },
@@ -212,6 +250,8 @@ const swedish: Translation = {
     visitGithub: 'Besök min GitHub',
     switchLanguage: 'Byt till engelska',
   },
+
+  // Första sektionen och den dekorativa kodillustrationen.
   hero: {
     availability: 'Tillgänglig för nästa möjlighet',
     titleFirst: 'Jag bygger digitala produkter',
@@ -227,6 +267,8 @@ const swedish: Translation = {
     sceneCaptionFirst: 'Frontend och backend',
     sceneCaptionSecond: 'i samma helhet.',
   },
+
+  // Presentation och personliga utvecklingsprinciper.
   about: {
     label: '01 / Om mig',
     titleFirst: 'Nyfiken på tekniken.',
@@ -247,6 +289,8 @@ const swedish: Translation = {
       },
     ],
   },
+
+  // Kompetensområden och tekniker.
   skills: {
     label: '02 / Kompetenser',
     title: 'Verktyg för hela produkten.',
@@ -280,6 +324,8 @@ const swedish: Translation = {
     learningStatus: 'Lär mig kontinuerligt',
     learningText: 'Just nu fördjupar jag mig i skalbara .NET-API:er, modern React och bättre leveransflöden.',
   },
+
+  // Projektsektionen och samtliga projektkort.
   projects: {
     label: '03 / Utvalda projekt',
     title: 'Byggt för att lösa, lära och leverera.',
@@ -330,6 +376,8 @@ const swedish: Translation = {
       },
     ],
   },
+
+  // Arbetsprocess och professionell inriktning.
   process: {
     label: '04 / Arbetssätt',
     title: 'Från oklar idé till tydlig lösning.',
@@ -354,6 +402,8 @@ const swedish: Translation = {
       },
     ],
   },
+
+  // Kontaktsektionen och dess call-to-action.
   contact: {
     label: '05 / Kontakt',
     title: 'Har du ett problem värt att bygga bort?',
@@ -361,6 +411,8 @@ const swedish: Translation = {
     button: 'Kontakta mig via GitHub',
     status: 'Öppen för möjligheter',
   },
+
+  // Sidfot.
   footer: {
     builtBy: 'Designad och utvecklad av Matheus Torrico.',
     copyright: 'Alla rättigheter förbehållna.',
@@ -368,6 +420,7 @@ const swedish: Translation = {
   },
 };
 
+// Publikt uppslagsregister som används av LanguageProvider.
 export const translations: Record<Language, Translation> = {
   en: english,
   sv: swedish,
