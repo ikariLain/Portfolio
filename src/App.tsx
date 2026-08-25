@@ -6,12 +6,15 @@ import Skills from './Components/Skills/Skills';
 import Projects from './Components/Projects/Projects';
 import Experiences from './Components/Experiences/Experiences';
 import Contact from './Components/Contact/Contact';
+import useLanguage from './useLanguage';
 import './index.css';
 
 function App() {
+  const { copy } = useLanguage();
+
   return (
     <div className="site-shell">
-      <a className="skip-link" href="#main-content">Gå till innehållet</a>
+      <a className="skip-link" href="#main-content">{copy.meta.skipLink}</a>
       <Header />
       <main id="main-content">
         <Hero />

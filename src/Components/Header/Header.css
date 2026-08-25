@@ -92,7 +92,8 @@
 }
 
 .icon-button,
-.github-link {
+.github-link,
+.language-button {
   height: 42px;
   border: 1px solid var(--border);
   border-radius: 9px;
@@ -122,13 +123,31 @@
   font-weight: 600;
 }
 
+.language-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding-inline: 0.65rem;
+  cursor: pointer;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+.language-button svg {
+  width: 15px;
+  height: 15px;
+}
+
 .github-link svg {
   width: 14px;
   height: 14px;
 }
 
 .icon-button:hover,
-.github-link:hover {
+.github-link:hover,
+.language-button:hover {
   border-color: var(--border-strong);
   background: var(--surface-hover);
 }
@@ -235,7 +254,23 @@
     height: 38px;
   }
 
+  .language-button {
+    width: 42px;
+    height: 38px;
+    padding: 0;
+  }
+
+  .language-button svg {
+    display: none;
+  }
+
   .mobile-menu {
     width: calc(100% - 1.2rem);
+  }
+}
+
+@media (max-width: 360px) {
+  .brand-copy {
+    display: none;
   }
 }

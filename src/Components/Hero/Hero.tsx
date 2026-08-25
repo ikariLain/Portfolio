@@ -1,7 +1,10 @@
 import { LuArrowDownRight, LuArrowRight, LuCheck, LuGithub } from 'react-icons/lu';
+import useLanguage from '../../useLanguage';
 import './Hero.css';
 
 export default function Hero() {
+  const { copy } = useLanguage();
+
   return (
     <section className="hero" id="top" aria-labelledby="hero-title">
       <div className="hero-grid" aria-hidden="true" />
@@ -9,22 +12,21 @@ export default function Hero() {
         <div className="hero-copy">
           <p className="availability">
             <span className="availability-dot" />
-            Tillgänglig för nästa möjlighet
+            {copy.hero.availability}
           </p>
 
           <h1 id="hero-title">
-            Jag bygger digitala produkter
-            <span>från databas till gränssnitt.</span>
+            {copy.hero.titleFirst}
+            <span>{copy.hero.titleSecond}</span>
           </h1>
 
           <p className="hero-intro">
-            Jag är Matheus, junior fullstackutvecklare med fokus på React, C# och .NET.
-            Jag förvandlar idéer till tydliga, stabila och genomtänkta webbupplevelser.
+            {copy.hero.intro}
           </p>
 
           <div className="hero-actions">
             <a className="button button-primary" href="#projects">
-              Se mina projekt <LuArrowDownRight aria-hidden="true" />
+              {copy.hero.projectsButton} <LuArrowDownRight aria-hidden="true" />
             </a>
             <a
               className="button button-secondary"
@@ -32,11 +34,11 @@ export default function Hero() {
               target="_blank"
               rel="noreferrer"
             >
-              <LuGithub aria-hidden="true" /> GitHub-profil
+              <LuGithub aria-hidden="true" /> {copy.hero.githubButton}
             </a>
           </div>
 
-          <ul className="hero-stack" aria-label="Huvudkompetenser">
+          <ul className="hero-stack" aria-label={copy.hero.skillsLabel}>
             <li>React</li>
             <li>C# / .NET</li>
             <li>REST API</li>
@@ -44,7 +46,7 @@ export default function Hero() {
           </ul>
         </div>
 
-        <div className="hero-scene" aria-label="Illustration av ett fullstackflöde">
+        <div className="hero-scene" aria-label={copy.hero.sceneLabel}>
           <div className="scene-glow" aria-hidden="true" />
 
           <div className="code-window">
@@ -65,22 +67,22 @@ export default function Hero() {
           <div className="metric-card metric-card--top">
             <span className="metric-icon metric-icon--success"><LuCheck aria-hidden="true" /></span>
             <div>
-              <small>API-status</small>
+              <small>{copy.hero.apiStatus}</small>
               <strong>200 OK</strong>
             </div>
           </div>
 
           <div className="metric-card metric-card--bottom">
             <div>
-              <small>Leveransflöde</small>
-              <strong>Idé → produktion</strong>
+              <small>{copy.hero.deliveryFlow}</small>
+              <strong>{copy.hero.deliveryValue}</strong>
             </div>
             <LuArrowRight aria-hidden="true" />
           </div>
 
           <div className="scene-caption">
             <span>01</span>
-            <p>Frontend och backend<br />i samma helhet.</p>
+            <p>{copy.hero.sceneCaptionFirst}<br />{copy.hero.sceneCaptionSecond}</p>
           </div>
         </div>
       </div>

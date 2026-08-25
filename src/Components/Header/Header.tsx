@@ -1,16 +1,9 @@
 import { useEffect, useState } from 'react';
-import { LuArrowUpRight, LuMenu, LuMoon, LuSun, LuX } from 'react-icons/lu';
+import { LuArrowUpRight, LuLanguages, LuMenu, LuMoon, LuSun, LuX } from 'react-icons/lu';
+import useLanguage from '../../useLanguage';
 import './Header.css';
 
 type Theme = 'dark' | 'light';
-
-const menuItems = [
-  { name: 'Om mig', href: '#about' },
-  { name: 'Kompetenser', href: '#skills' },
-  { name: 'Projekt', href: '#projects' },
-  { name: 'Arbetssätt', href: '#process' },
-  { name: 'Kontakt', href: '#contact' },
-];
 
 function getInitialTheme(): Theme {
   const savedTheme = localStorage.getItem('theme');
@@ -18,6 +11,7 @@ function getInitialTheme(): Theme {
 }
 
 export default function Header() {
+  const { language, setLanguage, copy } = useLanguage();
   const [hidden, setHidden] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [theme, setTheme] = useState<Theme>(getInitialTheme);
@@ -63,27 +57,38 @@ export default function Header() {
   return (
     <header className={`site-header ${hidden ? 'site-header--hidden' : ''}`}>
       <div className="header-inner">
-        <a className="brand-mark" href="#top" aria-label="Matheus Torrico, startsida">
+        <a className="brand-mark" href="#top" aria-label={copy.header.homeLabel}>
           <span className="brand-monogram">MT</span>
           <span className="brand-copy">
             <strong>Matheus Torrico</strong>
-            <small>Fullstackutvecklare</small>
+            <small>{copy.header.role}</small>
           </span>
         </a>
 
-        <nav className="desktop-nav" aria-label="Huvudnavigation">
-          {menuItems.map((item) => (
+        <nav className="desktop-nav" aria-label={copy.header.navigationLabel}>
+          {copy.header.menu.map((item) => (
             <a key={item.href} href={item.href}>{item.name}</a>
           ))}
         </nav>
 
         <div className="header-actions">
           <button
+            className="language-button"
+            type="button"
+            onClick={() => setLanguage(language === 'en' ? 'sv' : 'en')}
+            aria-label={copy.header.switchLanguage}
+            title={copy.header.switchLanguage}
+          >
+            <LuLanguages aria-hidden="true" />
+            <span>{language.toUpperCase()}</span>
+          </button>
+
+          <button
             className="icon-button"
             type="button"
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-            aria-label={theme === 'dark' ? 'Aktivera ljust tema' : 'Aktivera mörkt tema'}
-            title={theme === 'dark' ? 'Ljust tema' : 'Mörkt tema'}
+            aria-label={theme === 'dark' ? copy.header.useLightTheme : copy.header.useDarkTheme}
+            title={theme === 'dark' ? copy.header.lightTheme : copy.header.darkTheme}
           >
             {theme === 'dark' ? <LuSun aria-hidden="true" /> : <LuMoon aria-hidden="true" />}
           </button>
@@ -103,7 +108,7 @@ export default function Header() {
             onClick={() => setMenuOpen(!menuOpen)}
             aria-expanded={menuOpen}
             aria-controls="mobile-menu"
-            aria-label={menuOpen ? 'Stäng meny' : 'Öppna meny'}
+            aria-label={menuOpen ? copy.header.closeMenu : copy.header.openMenu}
           >
             {menuOpen ? <LuX aria-hidden="true" /> : <LuMenu aria-hidden="true" />}
           </button>
@@ -115,8 +120,8 @@ export default function Header() {
         className={`mobile-menu ${menuOpen ? 'mobile-menu--open' : ''}`}
         aria-hidden={!menuOpen}
       >
-        <nav aria-label="Mobilnavigation">
-          {menuItems.map((item, index) => (
+        <nav aria-label={copy.header.mobileNavigationLabel}>
+          {copy.header.menu.map((item, index) => (
             <a key={item.href} href={item.href} onClick={closeMenu} tabIndex={menuOpen ? 0 : -1}>
               <span>0{index + 1}</span>
               {item.name}
@@ -130,7 +135,7 @@ export default function Header() {
           rel="noreferrer"
           tabIndex={menuOpen ? 0 : -1}
         >
-          Besök min GitHub <LuArrowUpRight aria-hidden="true" />
+          {copy.header.visitGithub} <LuArrowUpRight aria-hidden="true" />
         </a>
       </div>
     </header>
