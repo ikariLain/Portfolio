@@ -7,12 +7,13 @@
 export type Language = 'en' | 'sv';
 
 // Fyll i respektive GitHub- eller projektlänk här.
-// Tomma värden använder länken till den generella repository-listan som fallback.
-const projectUrls = {
-  davarSmartScan: '',
-  realtimeQuiz: '',
-  noogApi: 'https://github.com/michaelw-jpg/noog',
-  architectureComparison: 'https://github.com/ikariLain/Clean-Architecture',
+// `showCodeLink` avgör om knappen för att läsa koden ska visas.
+// Tomma URL-värden använder den generella repository-listan som fallback.
+const projectLinks = {
+  davarSmartScan: { url: '', showCodeLink: false },
+  realtimeQuiz: { url: '', showCodeLink: false },
+  noogApi: { url: 'https://github.com/michaelw-jpg/noog', showCodeLink: true },
+  architectureComparison: { url: 'https://github.com/ikariLain/Clean-Architecture', showCodeLink: true },
 };
 
 // =============================================================================
@@ -137,18 +138,18 @@ const english = {
     items: [
       {
         number: '01',
-        url: projectUrls.davarSmartScan,
+        url: projectLinks.davarSmartScan.url,
+        showCodeLink: projectLinks.davarSmartScan.showCodeLink,
         title: 'Davar SmartScan',
         type: 'Flutter / OCR',
         status: 'In progress',
-        description: 'A scanning feature that extracts text from printed pages and identifies relevant keywords. The solution is structured for continued development with clearly separated responsibilities.',
-        highlights: ['OCR from printed pages', 'Keyword identification', 'Models, services & controllers'],
-        stack: ['Flutter', 'Dart', 'OCR', 'API integration'],
+        description: 'During my time at Jethro Global, I developed Davar SmartScan, a Flutter-based product that uses OCR to scan printed material, extract text and identify relevant keywords. I was responsible for building and structuring the solution with reusable models, services and controllers, as well as integrating it with external APIs to support continued product development.',        stack: ['Flutter', 'Dart', 'OCR', 'API integration','Developed at Jethro Global'],
         featured: true,
       },
       {
         number: '02',
-        url: projectUrls.realtimeQuiz,
+        url: projectLinks.realtimeQuiz.url,
+        showCodeLink: projectLinks.realtimeQuiz.showCodeLink,
         title: 'Real-time quiz platform',
         type: 'Full stack / Real time',
         status: 'In progress',
@@ -159,7 +160,8 @@ const english = {
       },
       {
         number: '03',
-        url: projectUrls.noogApi,
+        url: projectLinks.noogApi.url,
+        showCodeLink: projectLinks.noogApi.showCodeLink,
         title: 'Noog API',
         type: 'Full-stack system',
         status: 'Group project',
@@ -170,7 +172,8 @@ const english = {
       },
       {
         number: '04',
-        url: projectUrls.architectureComparison,
+        url: projectLinks.architectureComparison.url,
+        showCodeLink: projectLinks.architectureComparison.showCodeLink,
         title: 'Clean vs Vertical Slice',
         type: '.NET / Backend',
         status: 'Thesis project',
@@ -349,18 +352,18 @@ const swedish: Translation = {
     items: [
       {
         number: '01',
-        url: projectUrls.davarSmartScan,
+        url: projectLinks.davarSmartScan.url,
+        showCodeLink: projectLinks.davarSmartScan.showCodeLink,
         title: 'Davar SmartScan',
         type: 'Flutter / OCR',
         status: 'Pågående',
-        description: 'En skanningsfunktion som extraherar text från tryckta sidor och identifierar relevanta nyckelord. Lösningen är strukturerad för att kunna utvecklas vidare med tydligt separerade ansvarsområden.',
-        highlights: ['OCR av tryckta sidor', 'Nyckelordsidentifiering', 'Modeller, tjänster & controllers'],
-        stack: ['Flutter', 'Dart', 'OCR', 'API-integration'],
+        description: 'Under min tid på Jethro Global utvecklade jag Davar SmartScan, en Flutter-baserad produkt som använder OCR för att skanna tryckt material, extrahera text och identifiera relevanta nyckelord. Jag ansvarade för att bygga och strukturera lösningen med återanvändbara modeller, tjänster och controllers samt integrera den med externa API:er för att möjliggöra fortsatt produktutveckling.',        stack: ['Flutter', 'Dart', 'OCR', 'API-integration', 'Utvecklat på Jethro Global'],
         featured: true,
       },
       {
         number: '02',
-        url: projectUrls.realtimeQuiz,
+        url: projectLinks.realtimeQuiz.url,
+        showCodeLink: projectLinks.realtimeQuiz.showCodeLink,
         title: 'Realtidsplattform för quiz',
         type: 'Fullstack / Realtid',
         status: 'Pågående',
@@ -371,7 +374,8 @@ const swedish: Translation = {
       },
       {
         number: '03',
-        url: projectUrls.noogApi,
+        url: projectLinks.noogApi.url,
+        showCodeLink: projectLinks.noogApi.showCodeLink,
         title: 'Noog API',
         type: 'Fullstacksystem',
         status: 'Grupprojekt',
@@ -382,7 +386,8 @@ const swedish: Translation = {
       },
       {
         number: '04',
-        url: projectUrls.architectureComparison,
+        url: projectLinks.architectureComparison.url,
+        showCodeLink: projectLinks.architectureComparison.showCodeLink,
         title: 'Clean vs Vertical Slice',
         type: '.NET / Backend',
         status: 'Examensarbete',

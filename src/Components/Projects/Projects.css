@@ -196,6 +196,10 @@
   font-size: 0.68rem;
 }
 
+.project-footer--without-link {
+  justify-content: flex-start;
+}
+
 .project-footer a {
   display: inline-flex;
   align-items: center;
@@ -251,11 +255,11 @@
     padding-block: 2.5rem;
   }
 
-  .project-footer > span {
+  .project-footer:not(.project-footer--without-link) > span {
     display: none;
   }
 
-  .project-footer {
+  .project-footer:not(.project-footer--without-link) {
     justify-content: flex-end;
   }
 }

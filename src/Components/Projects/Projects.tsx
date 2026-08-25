@@ -45,27 +45,31 @@ export default function Projects() {
                 </div>
 
                 <div className="project-details">
-                  <ul className="project-highlights">
-                    {project.highlights.map((highlight) => (
-                      <li key={highlight}><LuCheck aria-hidden="true" /> {highlight}</li>
-                    ))}
-                  </ul>
+                  {project.highlights && (
+                    <ul className="project-highlights">
+                      {project.highlights.map((highlight) => (
+                        <li key={highlight}><LuCheck aria-hidden="true" /> {highlight}</li>
+                      ))}
+                    </ul>
+                  )}
                   <div className="project-stack">
                     {project.stack.map((technology) => <span className="tag" key={technology}>{technology}</span>)}
                   </div>
                 </div>
               </div>
 
-              <div className="project-footer">
+              <div className={`project-footer ${!project.showCodeLink ? 'project-footer--without-link' : ''}`}>
                 <span>{copy.projects.builtBy}</span>
-                <a
-                  href={project.url || fallbackProjectsUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label={`${copy.projects.exploreAria} ${project.title}`}
-                >
-                  <LuGithub aria-hidden="true" /> {copy.projects.exploreCode} <LuArrowUpRight aria-hidden="true" />
-                </a>
+                {project.showCodeLink && (
+                  <a
+                    href={project.url || fallbackProjectsUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`${copy.projects.exploreAria} ${project.title}`}
+                  >
+                    <LuGithub aria-hidden="true" /> {copy.projects.exploreCode} <LuArrowUpRight aria-hidden="true" />
+                  </a>
+                )}
               </div>
             </article>
           ))}
